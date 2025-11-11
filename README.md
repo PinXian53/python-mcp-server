@@ -24,3 +24,6 @@ uv init
 ```shell
 uv add "mcp[cli]"
 ```
+
+## Ref
+- https://modelcontextprotocol.io/docs/develop/build-server#python
