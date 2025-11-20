@@ -78,7 +78,7 @@ if __name__ == "__main__":
 ```
 
 
-🧪 步驟四：測試 MCP Server (使用 Inspector)
+### 🧪 步驟四：測試 MCP Server (使用 Inspector)
 使用 mcp dev 指令啟動 Inspector 工具，它會以 Stdio 模式執行你的 `weather.py`，並透過 Proxy 將資料傳輸到瀏覽器介面。
 
 1. 啟動 MCP inspector，並指定運行 `weather.py`
