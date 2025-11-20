@@ -88,3 +88,6 @@ Severity: {props.get('severity', 'Unknown')}
 Description: {props.get('description', 'No description available')}
 Instructions: {props.get('instruction', 'No specific instructions provided')}
 """
+
+if __name__ == "__main__":
+    mcp.run()
