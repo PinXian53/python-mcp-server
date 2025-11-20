@@ -1,10 +1,12 @@
-# python-mcp-server
+# Python MCP Server - STDIO Mode
 
-## 說明
+## 開發 MCP Server
+
+### 說明
 本專案依照官方範例，使用 python 實現 mcp server
 - https://modelcontextprotocol.io/docs/develop/build-server#python
 
-## 安裝 uv
+### 安裝 uv
 uv 是用來執行和管理 Python 專案的工具，可以安裝套件、管理環境和執行腳本
 
 安裝指令：
@@ -12,7 +14,7 @@ uv 是用來執行和管理 Python 專案的工具，可以安裝套件、管理
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-## 初始化專案
+### 初始化專案
 ```shell
 uv init
 ```
@@ -24,13 +26,14 @@ uv init
 - pyproject.toml
 - README.md
 
-## 安裝套件
+### 安裝套件
 > 💡 對 mcp server 來說只有 `"mcp[cli]"` 是必要的，`httpx` 是範例中為了查詢天氣另外加的
 ```shell
 uv add "mcp[cli]" httpx
 ```
 
-## 建立 MCP Server
+### 實現 MCP Server
+建立 `weather.py`
 ```python
 # 引入 FastMCP
 from mcp.server.fastmcp import FastMCP
@@ -63,4 +66,22 @@ async def get_forecast(latitude: float, longitude: float) -> str:
     # TODO 撰寫邏輯，並回傳結果
 
     return f"{latitude},{longitude}"
+```
+
+
+### 測試 MCP Server
+使用 MCP inspector 工具進行測試
+- 使用 STDIO Mode
+    ```shell
+    uv run mcp dev weather.py
+    ```
+
+```text
+Starting MCP inspector...
+⚙️ Proxy server listening on localhost:6277
+🔑 Session token: ada07a3c319d499a3cd65f6ec6f50....
+   Use this token to authenticate requests or set DANGEROUSLY_OMIT_AUTH=true to disable auth
+
+🚀 MCP Inspector is up and running at:
+   http://localhost:6274/?MCP_PROXY_AUTH_TOKEN=ada07a3c319d499a3cd65f6ec6f50....
 ```
