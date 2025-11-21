@@ -17,11 +17,11 @@
 ## 🔮 未來主流：為何推薦 Streamable HTTP？
 
 Streamable HTTP 結合 SSE 的輕量 與 WebSocket 的雙向能力，特別適合 AI / MCP 的互動模式：
-- ✔ 需要時才啟動串流，避免 SSE 永久連線造成資源浪費
-- ✔ 支援 雙向傳輸，可支援 AI <➜> Tool 的互動式流程
+- ✔ 需要時才啟動串流，避免 SSE 長時間佔用連線資源
+- ✔ 支援雙向傳輸，符合「AI ↔ Tool ↔ MCP」的交互流程
 - ✔ 適合生成長文本、程式碼、推理過程等 AI Streaming Response
 - ✔ 自然對應 MCP 的典型「多階段交流模型」：
     ```text
     User → AI → Tool → AI → Response
     ```
-因此，Streamable HTTP 被認為是未來 AI MCP 的主流通訊模式。
+因此，隨著 AI 工具的複雜度提升，Streamable HTTP 更適合未來 MCP Server 的主流開發方式。
