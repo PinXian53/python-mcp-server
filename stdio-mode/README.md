@@ -35,44 +35,24 @@ uv add "mcp[cli]" httpx
 ```
 
 ### 📝 步驟三：實現 MCP Server 邏輯
-建立 `weather.py`，並輸入以下內容：
-```python
-# 引入 FastMCP
-from mcp.server.fastmcp import FastMCP
+建立 weather.py，參考 [weather.py](weather.py) 內容 <br/>
 
-# 初始化 MCP server，並給予名稱
+主要重點說明：
+```python
+# 初始化 MCP server
 mcp = FastMCP("weather")
 
-# 建立 MCP Tool: get_alerts
+# 建立 MCP Tool
 @mcp.tool()
 async def get_alerts(state: str) -> str:
-    """Get weather alerts for a US state.
-
-    Args:
-        state: Two-letter US state code (e.g. CA, NY)
+    """
+    撰寫說明
     """
 
     # 撰寫業務邏輯，並回傳結果
-    # 完整內容請參考 Source Code
-
     return f"Fetching alerts for {state}..."
 
-# 建立 MCP Tool: get_forecast
-@mcp.tool()
-async def get_forecast(latitude: float, longitude: float) -> str:
-    """Get weather forecast for a location.
-
-    Args:
-        latitude: Latitude of the location
-        longitude: Longitude of the location
-    """
-
-    # 撰寫業務邏輯，並回傳結果
-    # 完整內容請參考 Source Code
-
-    return f"Forecast for Latitude: {latitude}, Longitude: {longitude}"
-
-# 程式進入點 (確保 mcp dev 能正確啟動 Stdio 模式)
+# 運行 mcp server (預設使用 STDIO 模式)
 if __name__ == "__main__":
     mcp.run()
 ```
