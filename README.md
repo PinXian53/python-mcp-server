@@ -25,3 +25,31 @@ Streamable HTTP 結合 SSE 的輕量 與 WebSocket 的雙向能力，特別適�
     User → AI → Tool → AI → Response
     ```
 因此，隨著 AI 工具的複雜度提升，Streamable HTTP 更適合未來 MCP Server 的主流開發方式。
+
+## Remote MCP Architecture
+```mermaid
+---
+config:
+  theme: base
+---
+flowchart LR
+    subgraph L["Local Computer"]
+        U["Browser"]
+    end
+    subgraph MM["MCP Marketplace"]
+        M["MCP Tool Server"]
+    end
+    subgraph R["Remote Server"]
+        A["Agent Server"]
+        MM
+        IS["Internal Services<br>(e.g. Database、MQ)"]
+        IA["Internal APIs"]
+    end
+    U -- HTTP or WebSocket --> A
+    A -- MCP Protocol<br>(SSE、Streamable) --> M
+M -- Service Calls --> IS
+M -- API Calls --> IA
+
+M@{ shape: procs}
+
+```
