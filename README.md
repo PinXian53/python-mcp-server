@@ -53,12 +53,25 @@ M -- API Calls --> IA
 M@{ shape: procs}
 
 ```
-- MCP Marketplace
-    - 使用 SSE、Streamable 模式連接，不使用 STDIO
-    - MCP Tool Server 種類：
-        - 第三方 MCP Server：例如，https://github.com/mcp
-        - 客制 MCP Server：依需求自建開發
-        - API Proxy MCP Server：將現有 API 轉為 MCP
-- MCP 安全性
-  - mcp tool 的使用授權
-  - mcp tool 內，資料的授權
+### MCP Marketplace
+- 連線方式
+    - 採用 SSE / Streamable HTTP 與 MCP Tool Server 連接
+    - 不使用 STDIO 模式（僅適用於 local tool）
+- MCP Tool Server 種類：
+    - 第三方 MCP Server
+        - 由外部社群或廠商提供
+    - 自建 MCP Server
+        - 依業務需求自行開發與維運
+        - 可整合內部系統與資料來源
+    - API Proxy MCP Server
+        - 將既有 REST / RPC API 封裝為 MCP Tool
+        - 作為 MCP 與既有服務之間的轉接層
+
+
+### MCP 安全性與存取控制
+- Tool 使用授權（Tool-level Authorization）
+    - 控制 Agent 是否可存取特定 MCP Tool
+    - 可依角色、租戶（Tenant）或用途進行限制
+- Tool 內部資料授權（Data-level Authorization）
+    - MCP Tool 內仍需進行資料層級的權限控管
+    - 確保僅能存取被授權的資源與資料範圍
