@@ -51,8 +51,6 @@ flowchart LR
     M -- API Calls --> IA
 
     M@{ shape: procs}
-    M@{ icon: "gcp:google-kubernetes-engine", pos: "b"}
-
 ```
 ### MCP Marketplace
 - 連線方式
