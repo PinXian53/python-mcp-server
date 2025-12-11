@@ -56,6 +56,10 @@ flowchart LR
     M@{ shape: procs}
 ```
 ```mermaid
+---
+config:
+  theme: base
+---
 sequenceDiagram
     participant U as Browser / User
     participant O as OAuth Server
