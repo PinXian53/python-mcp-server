@@ -53,3 +53,12 @@ M -- API Calls --> IA
 M@{ shape: procs}
 
 ```
+- MCP Marketplace
+    - 使用 SSE、Streamable 模式連接，不使用 STDIO
+    - MCP Tool Server 種類：
+        - 第三方 MCP Server：例如，https://github.com/mcp
+        - 客制 MCP Server：依需求自建開發
+        - API Proxy MCP Server：將現有 API 轉為 MCP
+- MCP 安全性
+  - mcp tool 的使用授權
+  - mcp tool 內，資料的授權
