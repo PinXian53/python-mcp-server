@@ -47,10 +47,11 @@ flowchart LR
     end
     U -- HTTP or WebSocket --> A
     A -- MCP Protocol<br>(SSE、Streamable) --> M
-M -- Service Calls --> IS
-M -- API Calls --> IA
+    M -- Service Calls --> IS
+    M -- API Calls --> IA
 
-M@{ shape: procs}
+    M@{ shape: procs}
+    M@{ icon: "gcp:google-kubernetes-engine", pos: "b"}
 
 ```
 ### MCP Marketplace
@@ -69,6 +70,8 @@ M@{ shape: procs}
 
 
 ### MCP 安全性與存取控制
+- Authentication
+  - https://google.github.io/adk-docs/tools-custom/authentication/
 - Tool 使用授權（Tool-level Authorization）
     - 控制 Agent 是否可存取特定 MCP Tool
     - 可依角色、租戶（Tenant）或用途進行限制
