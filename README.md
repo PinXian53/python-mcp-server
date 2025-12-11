@@ -45,11 +45,11 @@ flowchart LR
         IS["Internal Services / Database / MQ"]
         IA["Internal APIs"]
     end
-    O["OAuth Server"]
+    O["Authorization Server"]
 
-    U -- Login → obtain JWT --> O
-    U -- Request + JWT<br>(HTTP or WebSocket) --> A
-    A -- Tool call with JWT<br>(SSE、Streamable) --> M
+    U -- Login → obtain access token --> O
+    U -- Request + access token<br>(HTTP or WebSocket) --> A
+    A -- Tool call with access token<br>(SSE、Streamable) --> M
     M -- Service Calls --> IS
     M -- API Calls --> IA
 
@@ -62,28 +62,28 @@ config:
 ---
 sequenceDiagram
     participant U as Browser / User
-    participant O as OAuth Server
+    participant O as Authorization Server
     participant A as Agent Server
     participant M as MCP Tool Server
     participant IS as Internal Services / DB / MQ
     participant IA as Internal APIs
 
-    %% 使用者登入取得 JWT
+    %% 使用者登入取得 Access Tokenn
     U->>O: Login request
-    O-->>U: JWT Token
+    O-->>U: Access token
 
-    %% 使用者帶 JWT 請求 Agent Server
-    U->>A: Request + JWT (HTTP / WebSocket)
-    A-->>A: Verify JWT locally
+    %% 使用者帶 Access Token 請求 Agent Server
+    U->>A: Request + Access Token (HTTP / WebSocket)
+    A-->>A: Verify access token locally
 
     %% Agent Server 呼叫 MCP Tool Server
-    A->>M: Tool call with JWT (SSE / Streamable)
-    M-->>M: Verify JWT locally
-    alt JWT valid and authorized
+    A->>M: Tool call with access token (SSE / Streamable)
+    M-->>M: Verify access token locally
+    alt Access token valid and authorized
         M->>IS: Call internal services / DB / MQ
         M->>IA: Call internal APIs
         M-->>A: Tool execution result
-    else JWT invalid or unauthorized
+    else Access token invalid or unauthorized
         M-->>A: 403 Forbidden / error payload
     end
 
