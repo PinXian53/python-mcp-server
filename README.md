@@ -114,8 +114,12 @@ sequenceDiagram
     - API Proxy MCP Server
         - 將既有 REST / RPC API 封裝為 MCP Tool
         - 作為 MCP 與既有服務之間的轉接層
-        - https://cloud.google.com/blog/products/ai-machine-learning/mcp-support-for-apigee
-        - https://www.youtube.com/watch?v=q9w39U0LVG4
+        - 例如：
+            - Apigee
+                - https://cloud.google.com/blog/products/ai-machine-learning/mcp-support-for-apigee
+                - https://www.youtube.com/watch?v=q9w39U0LVG4
+            - mcp-openapi-proxy
+                - https://github.com/google/mcp-openapi-proxy
 
 
 ### MCP 安全性與存取控制
