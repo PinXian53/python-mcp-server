@@ -55,6 +55,38 @@ flowchart LR
 
     M@{ shape: procs}
 ```
+```mermaid
+sequenceDiagram
+    participant U as Browser / User
+    participant O as OAuth Server
+    participant A as Agent Server
+    participant M as MCP Tool Server
+    participant IS as Internal Services / DB / MQ
+    participant IA as Internal APIs
+
+    %% 使用者登入取得 JWT
+    U->>O: Login request
+    O-->>U: JWT Token
+
+    %% 使用者帶 JWT 請求 Agent Server
+    U->>A: Request + JWT (HTTP / WebSocket)
+    A-->>A: Verify JWT locally
+
+    %% Agent Server 呼叫 MCP Tool Server
+    A->>M: Tool call with JWT (SSE / Streamable)
+    M-->>M: Verify JWT locally
+    alt JWT valid and authorized
+        M->>IS: Call internal services / DB / MQ
+        M->>IA: Call internal APIs
+        M-->>A: Tool execution result
+    else JWT invalid or unauthorized
+        M-->>A: 403 Forbidden / error payload
+    end
+
+    %% 回傳結果給使用者
+    A-->>U: Response with tool result
+```
+
 ### MCP Marketplace
 - 連線方式
     - 採用 SSE / Streamable HTTP 與 MCP Tool Server 連接
