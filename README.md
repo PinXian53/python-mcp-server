@@ -117,6 +117,7 @@ sequenceDiagram
         - 例如：
             - Apigee
                 - https://cloud.google.com/blog/products/ai-machine-learning/mcp-support-for-apigee
+                - https://apigee.github.io/apigee-go-gen/
                 - https://www.youtube.com/watch?v=q9w39U0LVG4
             - mcp-openapi-proxy
                 - https://github.com/google/mcp-openapi-proxy
