@@ -119,8 +119,12 @@ sequenceDiagram
                 - https://cloud.google.com/blog/products/ai-machine-learning/mcp-support-for-apigee
                 - https://apigee.github.io/apigee-go-gen/
                 - https://www.youtube.com/watch?v=q9w39U0LVG4
-            - mcp-openapi-proxy
+            - fastmcp
+                - https://gofastmcp.com/integrations/openapi
+            - 其他
                 - https://github.com/google/mcp-openapi-proxy
+                - https://github.com/harsha-iiiv/openapi-mcp-generator
+                - https://github.com/ivo-toby/mcp-openapi-server
 
 
 ### MCP 安全性與存取控制
