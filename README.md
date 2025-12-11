@@ -37,16 +37,19 @@ flowchart LR
         U["Browser"]
     end
     subgraph MM["MCP Marketplace"]
-        M["MCP Tool Server<br>(Running on Cloud Run / GKE)"]
+        M["MCP Tool Server<br>(Cloud Run / GKE)"]
     end
     subgraph R["Remote Server"]
-        A["Agent Server<br>(Running on Cloud Run / GKE)"]
+        A["Agent Server<br>(Cloud Run / GKE)"]
         MM
-        IS["Internal Services<br>(e.g. Database、MQ)"]
+        IS["Internal Services / Database / MQ"]
         IA["Internal APIs"]
     end
-    U -- HTTP or WebSocket --> A
-    A -- MCP Protocol<br>(SSE、Streamable) --> M
+    O["OAuth Server"]
+
+    U -- Login → obtain JWT --> O
+    U -- Request + JWT<br>(HTTP or WebSocket) --> A
+    A -- Tool call with JWT<br>(SSE、Streamable) --> M
     M -- Service Calls --> IS
     M -- API Calls --> IA
 
