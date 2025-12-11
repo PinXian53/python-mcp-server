@@ -36,9 +36,11 @@ flowchart LR
     subgraph L["Local Computer"]
         U["Browser"]
     end
+
     subgraph MM["MCP Marketplace"]
         M["MCP Tool Server<br>(Cloud Run / GKE)"]
     end
+
     subgraph R["Remote Server"]
         A["Agent Server<br>(Cloud Run / GKE)"]
         MM
@@ -47,9 +49,16 @@ flowchart LR
     end
     O["Authorization Server"]
 
+    %% Authentication flow
     U -- Login → obtain access token --> O
-    U -- Request + access token<br>(HTTP or WebSocket) --> A
+
+    %% User calls Agent Server with token
+    U -- Request + Access Token<br>(HTTP or WebSocket) --> A
+
+    %% Agent Server calls MCP Tool Server
     A -- Tool call with access token<br>(SSE、Streamable) --> M
+
+    %% MCP Tool Server backend calls
     M -- Service Calls --> IS
     M -- API Calls --> IA
 
@@ -68,7 +77,7 @@ sequenceDiagram
     participant IS as Internal Services / DB / MQ
     participant IA as Internal APIs
 
-    %% 使用者登入取得 Access Tokenn
+    %% 使用者登入取得 Access Token
     U->>O: Login request
     O-->>U: Access token
 
@@ -79,6 +88,7 @@ sequenceDiagram
     %% Agent Server 呼叫 MCP Tool Server
     A->>M: Tool call with access token (SSE / Streamable)
     M-->>M: Verify access token locally
+
     alt Access token valid and authorized
         M->>IS: Call internal services / DB / MQ
         M->>IA: Call internal APIs
