@@ -37,10 +37,10 @@ flowchart LR
         U["Browser"]
     end
     subgraph MM["MCP Marketplace"]
-        M["MCP Tool Server<br>(e.g. Cloud Run、GKE)"]
+        M["MCP Tool Server<br>(Running on Cloud Run / GKE)"]
     end
     subgraph R["Remote Server"]
-        A["Agent Server<br>(e.g. Cloud Run、GKE)"]
+        A["Agent Server<br>(Running on Cloud Run / GKE)"]
         MM
         IS["Internal Services<br>(e.g. Database、MQ)"]
         IA["Internal APIs"]
