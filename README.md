@@ -108,6 +108,7 @@ sequenceDiagram
 - MCP Tool Server 種類：
     - 第三方 MCP Server
         - 由外部社群或廠商提供
+        - GCP: https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services
     - 自建 MCP Server
         - 依業務需求自行開發與維運
         - 可整合內部系統與資料來源
