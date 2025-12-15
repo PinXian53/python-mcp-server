@@ -129,11 +129,21 @@ sequenceDiagram
 
 
 ### MCP 安全性與存取控制
-- Authentication
-  - https://google.github.io/adk-docs/tools-custom/authentication/
-- Tool 使用授權（Tool-level Authorization）
+**系統安全性**
+1. 採用可信任的 MCP 實作
+    - 優先使用開源且經過社群或實務驗證的 MCP 專案
+    - 降低供應鏈攻擊與惡意程式碼注入的風險
+2. 執行環境隔離
+    - 建議將 MCP Server 運行於 Sandbox 或受限環境中（如 Container、VM）
+    - 限制其對主系統、網路與檔案系統的存取權限
+
+**存取控制**
+1. 身分驗證（Authentication）
+    - MCP Server 應具備明確的身分驗證機制
+    - 可參考官方文件實作標準化驗證流程: https://google.github.io/adk-docs/tools-custom/authentication/
+2. Tool 使用授權（Tool-level Authorization）
     - 控制 Agent 是否可存取特定 MCP Tool
     - 可依角色、租戶（Tenant）或用途進行限制
-- Tool 內部資料授權（Data-level Authorization）
-    - MCP Tool 內仍需進行資料層級的權限控管
+3. Tool 內部資料授權（Data-level Authorization）
+    - 即使 Tool 已通過存取授權，仍需在 Tool 內部實作資料層級的權限控管
     - 確保僅能存取被授權的資源與資料範圍
